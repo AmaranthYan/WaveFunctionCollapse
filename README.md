@@ -5,17 +5,22 @@ My personal project on WaveFunctionCollapse algorithm
 Backtracking combined with Wave Function Collapse
 
 How to solve sudoku problem with Wave Function Collapse algo?  
-Step 1. Set an empty 9x9 board with max superposed wave states 0x1ff  
-Step 2. Read the initial board from .csv and do wave collapse on known cells  
-Step 3. Use backtracking and WFC to solve all unkown cells, prioritize cells with the lowest entropy  
+1. Set an empty 9x9 board with max superposed wave states 0x1ff  
+2. Read the initial board from .csv and do wave collapse on known cells  
+3. Use backtracking and WFC to solve all unkown cells, prioritize cells with the lowest entropy  
 
-How to do wave collapse on a cell  
-Step 1. Collapse - Reduce the superposed states of the cell to one certain state  
-Step 2. Propagate - Remove that state from all other cells affected by the cell (colomn, row, square)  
-Step 3. Re-propagate - If any of these cells is reduced to one certain state, re-propagate from that cell until no propagation is needed  
+How to do wave collapse on a cell?  
+1. Collapse - Reduce the superposed states of the cell to one certain state  
+2. Propagate - Remove that state from all other cells affected by the cell (colomn, row, square)  
+3. Re-propagate - If any of these cells is reduced to one certain state, re-propagate from that cell until no propagation is needed  
+
 If any cell is reduced to 0 state, then the board is invalid and algo returns false (need backtracking)  
 
-Sudoku  
+Memory usage  
++ Wave states (bit flags) x 81  
++ Entropy lookup table (vector of idx) x 7
+
+Demo Sudoku  
 <table>
       <tr><td>8</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
       <tr><td> </td><td> </td><td>3</td><td>6</td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
@@ -28,9 +33,9 @@ Sudoku
       <tr><td> </td><td>9</td><td> </td><td> </td><td> </td><td> </td><td>4</td><td> </td><td> </td></tr>
 </table>
 
-Result
-x64 release
-board initialized in 0.000243 sec
+Result  
+on x64 release  
+board initialized in 0.000243 sec  
 solution found in 0.003439 sec
 
 ## 2) Tilemap Generation
