@@ -213,7 +213,7 @@ void SolveSudokuWaveStates(u16* wave_states, vector<u8>* entropy, int idx, u16 s
 		{
 			if (e[i].size() > 0)
 			{
-				cell = e[i][0];
+				cell = e[i][e[i].size() / 3];
 				break;
 			}
 		}
