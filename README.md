@@ -6,10 +6,10 @@ Backtracking combined with Wave Function Collapse
 
 How to solve sudoku problem with Wave Function Collapse algo?  
 1. Set an empty 9x9 board with max superposed wave states 0x1ff  
-2. Read the initial board from .csv and do wave collapse on known cells  
-3. Use backtracking and WFC to solve all unkown cells, prioritize cells with the lowest entropy  
+2. Read the initial board from .csv and apply wave collapse to known cells  
+3. Use backtracking and WFC to solve all unkown cells, prioritize cells with the lowest entropy as search targets  
 
-How to do wave collapse on a cell?  
+How to apply wave collapse to a cell?  
 1. Collapse - Reduce the superposed states of the cell to one certain state  
 2. Propagate - Remove that state from all other cells affected by the cell (colomn, row, square)  
 3. Re-propagate - If any of these cells is reduced to one certain state, re-propagate from that cell until no propagation is needed  
@@ -17,7 +17,7 @@ How to do wave collapse on a cell?
 If any cell is reduced to 0 state, then the board is invalid and algo returns false (need backtracking)  
 
 Memory usage  
-+ Wave states (bit flags) x 81  
++ Wave states array (bit flags) x 81  
 + Entropy lookup table (vector of idx) x 7
 
 Demo Sudoku  
